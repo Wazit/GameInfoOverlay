@@ -12,16 +12,16 @@ Fully native **AML SDK** — no CLEO, no CALLSCM, no OpcodeCaller, no DEFOPCODE.
 - Configurable position, scale, and toggle via INI
 - Works with GTA:SA Android ModLoader (AML) 1.4+
 
-## 📦 AMLMar structure
+## 📦 Release zip layout
 ```
-GameInfoOverlay_AMLMar.zip
+GameInfoOverlay.zip
    ├── configs/
    │   └── net.wazitech.gameinfooverlay.ini
    └── mods/
        ├── libGameInfoOverlay.so       (armeabi-v7a / GTA:SA 2.00)
        └── libGameInfoOverlay64.so     (arm64-v8a / GTA:SA 2.10)
 ```
-> Zip is AMLMar-ready — drop it into your `mods/` folder, no manual extraction needed.
+> Drop-in zip — keep it packaged in your `mods/` folder, no manual extraction needed.
 
 ## 🔄 CLEO -> Native SDK mapping
 | Original CLEO approach | Native SDK replacement |
@@ -59,7 +59,7 @@ Outputs:
 3. Test in GTA:SA 2.00 (arm32) and 2.10 (arm64).
 4. FPS, RAM, clock, and play time all show and update correctly.
 5. INI position/scale changes apply in-game.
-6. Pack the two `.so` files into the AMLMar zip layout above and attach it to Releases.
+6. Pack the two `.so` files into the zip layout above and attach it to Releases.
 
 ## 📥 Releases
-Download the ready AMLMar zip from the **Releases** tab (`GameInfoOverlay_AMLMar.zip`).
+Download the ready zip from the **Releases** tab (`GameInfoOverlay.zip`).
