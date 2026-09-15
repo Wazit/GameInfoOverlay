@@ -21,9 +21,8 @@ GameInfoOverlay.zip
        ├── libGameInfoOverlay.so       (armeabi-v7a / GTA:SA 2.00)
        └── libGameInfoOverlay64.so     (arm64-v8a / GTA:SA 2.10)
 ```
-> Drop-in zip — keep it packaged in your `mods/` folder, no manual extraction needed.
 
-## 🔄 CLEO -> Native SDK mapping
+## 🔄 CLEO → Native SDK mapping
 | Original CLEO approach | Native SDK replacement |
 |---|---|
 | CFont drawing opcodes | `CFont::SetFontStyle / SetScale / SetColor / PrintString` |
@@ -32,6 +31,25 @@ GameInfoOverlay.zip
 | HUD drawing | `Events::drawHudEvent` |
 
 No opcode was kept — everything translates to SDK calls because the SDK fully supports this mod.
+
+## 📁 Source code (zip) — what you compile
+```
+GameInfoOverlay/
+├── project.properties
+└── jni/
+    ├── Android.mk
+    ├── Application.mk
+    ├── LICENSE
+    ├── README.md
+    ├── build.sh
+    ├── main.cpp
+    ├── ndkpath.txt
+    ├── test_build.ps1
+    ├── aml-psdk/          (game SDK headers)
+    └── mod/               (AML mod headers)
+```
+
+Import the source zip into AML Compiler (NDK_BUILD, armeabi-v7a + arm64-v8a) and compile.
 
 ## ✅ What to do
 - Keep using `Events::drawHudEvent` for HUD drawing.
@@ -47,11 +65,11 @@ No opcode was kept — everything translates to SDK calls because the SDK fully 
 
 ## 🔧 Build
 ```
-./build.sh        # builds both ABIs (arm64-v8a + armeabi-v7a)
+./jni/build.sh        # builds both ABIs (arm64-v8a + armeabi-v7a)
 ```
 Outputs:
-- `armeabi-v7a` -> `libGameInfoOverlay.so`
-- `arm64-v8a`   -> `libGameInfoOverlay64.so`
+- `armeabi-v7a` → `libGameInfoOverlay.so`
+- `arm64-v8a`   → `libGameInfoOverlay64.so`
 
 ## ✅ Verification checklist
 1. Build completes with no errors on both ABIs.
@@ -63,3 +81,5 @@ Outputs:
 
 ## 📥 Releases
 Download the ready zip from the **Releases** tab (`GameInfoOverlay.zip`).
+
+Extract `libGameInfoOverlay.so` + `libGameInfoOverlay64.so` into your `mods/` folder.
